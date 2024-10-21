@@ -25,4 +25,6 @@ public class Product {
     private int quantity;
     private boolean available;
     private Date releaseDate;
+    private String customer;
+    private String custoufck;
 }
