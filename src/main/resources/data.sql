@@ -1,5 +1,3 @@
-
-INSERT INTO Product (name, `desc`, brand, price, category, quantity, available, release_date) VALUES
 ('Ibuprofen', 'Pain reliever and anti-inflammatory', 'Advil', 9.99, 'Pain Relief', 500, TRUE, '2023-01-10'),
 ('Amoxicillin', 'Antibiotic for bacterial infections', 'Amoxil', 15.99, 'Antibiotics', 300, TRUE, '2023-02-15'),
 ('Metformin', 'Medication for type 2 diabetes management', 'Glucophage', 25.99, 'Diabetes Care', 200, TRUE, '2023-03-20'),
