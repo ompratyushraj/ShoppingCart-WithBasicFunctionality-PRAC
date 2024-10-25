@@ -2,17 +2,17 @@ package com.telusko.practice.ecom_proj.controller;
 
 import com.telusko.practice.ecom_proj.model.Product;
 import com.telusko.practice.ecom_proj.service.ProductService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-<<<<<<< HEAD
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-=======
+import java.io.IOException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
->>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
+
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-<<<<<<< HEAD
+
     @PostMapping("/product")
     public ResponseEntity<?> addProduct(@RequestPart Product product,
                                         @RequestPart MultipartFile imageFile){
@@ -65,6 +65,37 @@ public class ProductController {
                 .body(imageFile);
     }
 
-=======
->>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
+    @PutMapping("/product/{id}")
+    public ResponseEntity<String> updateProduct(@PathVariable int id,
+                                                @RequestPart Product product,
+                                                @RequestPart MultipartFile imageFile){
+        Product product1 = null;
+        try {
+            product1 = service.updateProduct(id, product, imageFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if(product1 != null)
+            return new ResponseEntity<>("Updated Successfully !", HttpStatus.OK);
+        else
+            return new ResponseEntity<>("Failed to Update !", HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("/product/{id}")
+    public ResponseEntity<String> deleteProduct(@PathVariable int id){
+        Product product = service.getProductById(id);
+        if(product != null){
+            service.deleteProduct(id);
+            return new ResponseEntity<>("Deleted Successfully !", HttpStatus.OK);
+        }
+        else
+            return new ResponseEntity<>("Product not found !", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/products/search")
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String keyword){
+        System.out.println("Searching with: " + keyword);
+        List<Product> products = service.searchProducts(keyword);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
 }

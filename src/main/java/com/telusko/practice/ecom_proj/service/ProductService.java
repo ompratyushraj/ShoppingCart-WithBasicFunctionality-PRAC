@@ -5,7 +5,6 @@ import com.telusko.practice.ecom_proj.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -22,7 +21,6 @@ public class ProductService {
     public Product getProductById(int id) {
         return prodRepo.findById(id).orElse(null);
     }
-<<<<<<< HEAD
 
     public Product addProduct(Product product, MultipartFile imageFile) throws IOException {
         product.setImageName(imageFile.getOriginalFilename());
@@ -30,6 +28,19 @@ public class ProductService {
         product.setImageData(imageFile.getBytes());
         return prodRepo.save(product);
     }
-=======
->>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
+
+    public Product updateProduct(int id, Product product, MultipartFile imageFile) throws IOException {
+        product.setImageData(imageFile.getBytes());
+        product.setImageName(imageFile.getOriginalFilename());
+        product.setImageType(imageFile.getContentType());
+        return prodRepo.save(product);
+    }
+
+    public void deleteProduct(int id) {
+        prodRepo.deleteById(id);
+    }
+
+    public List<Product> searchProducts(String keyword) {
+        return prodRepo.searchProducts(keyword);
+    }
 }
