@@ -1,5 +1,9 @@
 package com.telusko.practice.ecom_proj.model;
 
+<<<<<<< HEAD
+=======
+import com.fasterxml.jackson.annotation.JsonFilter;
+>>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

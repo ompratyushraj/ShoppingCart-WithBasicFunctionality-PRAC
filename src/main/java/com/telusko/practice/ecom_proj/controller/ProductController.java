@@ -4,10 +4,15 @@ import com.telusko.practice.ecom_proj.model.Product;
 import com.telusko.practice.ecom_proj.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+<<<<<<< HEAD
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+=======
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+>>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
 
 import java.util.List;
 
@@ -38,6 +43,7 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+<<<<<<< HEAD
     @PostMapping("/product")
     public ResponseEntity<?> addProduct(@RequestPart Product product,
                                         @RequestPart MultipartFile imageFile){
@@ -59,4 +65,6 @@ public class ProductController {
                 .body(imageFile);
     }
 
+=======
+>>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
 }

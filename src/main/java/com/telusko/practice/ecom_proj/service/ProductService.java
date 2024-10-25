@@ -22,6 +22,7 @@ public class ProductService {
     public Product getProductById(int id) {
         return prodRepo.findById(id).orElse(null);
     }
+<<<<<<< HEAD
 
     public Product addProduct(Product product, MultipartFile imageFile) throws IOException {
         product.setImageName(imageFile.getOriginalFilename());
@@ -29,4 +30,6 @@ public class ProductService {
         product.setImageData(imageFile.getBytes());
         return prodRepo.save(product);
     }
+=======
+>>>>>>> 5621293a493f62b65b07952aec6d309ece17587b
 }
